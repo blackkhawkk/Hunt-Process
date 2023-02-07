@@ -1,0 +1,44 @@
+Methodology for App Penetration Testing on application targets:
+
+
+Step 1: Before beginning the engagement, we may begin with Scoping, where we review the third-party provided information to determine the scope and determine whether testing is doable within the stated period.
+During this step, verify that the application is accessible and that credentials (if necessary) are functioning properly.
+If anything from Step 1 is blocking, contact the relevant party and request that the blocker items be unblocked.
+
+
+Step 2: Next, begin visiting the application while allowing Burp Suite to fill the $Target menu with traffic.
+The primary objective is to comprehend basic business logic, map out intriguing functions, and construct an attack surface.
+Moreover, take notes if necessary.
+
+
+Step 3: In tandem with $Step-2, depending on the extent of the scope, commence Recon actions.
+Port Scan, Directory Fuzzing, Historical URL Scan, Nuclei/Template Based Fuzzing, GitHub dork, Shodan dork, Google Dorks, and a few more tools are nonetheless essential bare minimums.We can also do an OSINT search for information and data leaks connected to my target.
+
+
+Step 4: In addition, initiate the preparation of a threat map with hypothetical test cases of "How an attacker may exploit this application?" If an application had three user roles, for instance, we would check for privilege escalation on "Three Different Levels" (Vertical) as well as "Same Level" (Horizontal).
+
+
+5. Finally, and most critically, begin manual penetration testing of the application. Incorporate the test cases generated in Step 4 into my manual testing. Now, to further dissect the manual penetration testing methodology:
+
+a. Rely mostly on Burp or ZAP, Developer Tools, and Skills during the manual evaluation.
+
+b. When performing Active/Passive Scanner or scans coming from Burp Ext, use the Burp's Advance Scope option to eliminate unwanted noise and ensure you're in the right scope.
+
+c. Use [Autorize](https://portswigger.net/bappstore/f9bbac8c4acf4aefa4aefa4a7c92a99af2f) to execute Privilege Escalation & IDOR-related checks.
+
+d. Inspect the majority of GET endpoints that return data with an unauthenticated user for a lack of authorization checks.
+
+g. Use burp's Match & Replace feature to detect injection attacks. Define certain stings that are substituted in the Payloads by the Match & Replace rules of Burp Proxy. It makes testing in general quite simple.
+
+f. Devote more work to functions like File Upload, since these activities have a large attack surface.
+
+f. Use burp Ext according to the application. If the application utilises SSO, for instance, I will only activate the SSO-related extensions, such as SAML Raider and others.
+
+h. Maintain test logs using [Logger++](https://portswigger.net/bappstore/470b7057b86f41c396a979033f0f81).
+Keeping records is quite helpful.
+
+
+This fundamental assessment approach evaluates a web application. However, we will strive to cover much more in the Manual evaluation in a subsequent article.
+
+
+We will study together if you have any queries about "How do I assess particular things on application?" 
